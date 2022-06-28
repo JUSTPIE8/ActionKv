@@ -6,3 +6,16 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+# for writing to disks and reusing it
+byteorder="1.2"
+#provides checksum functionality
+crc="1.7"
+serde={version="1.0",features=["derive"]}
+serde_json="1.0"
+[lib]
+name="libactionkv"
+path="src/lib.rs"
+
+[[bin]]
+name="akv_mem"
+path="src/akv_mem.rs"
