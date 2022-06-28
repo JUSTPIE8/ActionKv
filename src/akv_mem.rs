@@ -21,7 +21,7 @@ fn main() {
 
     let path = std::path::Path::new(&fname);
 
-    let mut store = ActionKV.open(path).expect("unable to open a file ");
+    let mut store = ActionKV::open(path).expect("unable to open a file ");
     store.load().expect("unable to load data");
 
     match action {
