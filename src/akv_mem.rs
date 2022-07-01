@@ -14,8 +14,8 @@ fn main() {
     //for getting comamnd line arguments
     let args: Vec<String> = std::env::args().collect();
     let fname = args.get(1).expect(&USAGE);
-    let action: &str = args.get(2).expect(&USAGE).as_ref();
-    let key: &str = args.get(3).expect(&USAGE).as_ref();
+    let action = args.get(2).expect(&USAGE).as_ref();
+    let key = args.get(3).expect(&USAGE).as_ref();
     let maybe_value = args.get(4);
     //  println!("{:?}", action);
 
@@ -27,7 +27,7 @@ fn main() {
     match action {
         "get" => match store.get(key).unwrap() {
             None => eprintln!("{:?} not found ", key),
-            Some(value) => println!("{:?}", value),
+            Some(value) => println!("{:?}", String::from_utf8_lossy(&value)),
         },
         "delete" => store.delete(key).unwrap(),
         "insert" => {
